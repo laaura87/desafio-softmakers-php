@@ -20,7 +20,7 @@ const Showcontactpage: React.FC = () => {
     const confirmRemove = window.confirm('Deseja apagar o contato?');
 
     if (confirmRemove) {
-      const url = `http://localhost:3050/api/contacts/${id}`;
+      const url = `http://localhost:8000/api/contacts/${id}`;
 
       api.delete(url).then((response) => console.log(response.data));
     }
@@ -61,7 +61,7 @@ const Showcontactpage: React.FC = () => {
         </Link>
         <div>
           <img
-            src={`http://localhost:8000/storage/${contact?.image}`}
+            src={`http://localhost:8000/storage/images/${contact?.image}`}
             alt={contact?.name}
           />
         </div>
