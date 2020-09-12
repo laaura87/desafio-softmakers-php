@@ -21,21 +21,15 @@ const Showcontactpage: React.FC = () => {
 
     if (confirmRemove) {
       const url = `http://localhost:8000/api/contacts/${id}`;
-
       api.delete(url).then((response) => console.log(response.data));
     }
   }
 
   useEffect(() => {
-    (async function anyNameFunction() {
-      try {
-        await api
-          .get(`/api/contacts/${id}`)
-          .then((response) => setContact(response.data.findContact));
-      } catch (error) {
-        console.log(error);
-      }
-    })();
+    api.get(`http://localhost:8000/api/contacts/${id}`).then((response) => {
+      console.log(response.data.findContact);
+      setContact(response.data.findContact);
+    });
   }, []);
 
   if (!contact) {
@@ -61,7 +55,7 @@ const Showcontactpage: React.FC = () => {
         </Link>
         <div>
           <img
-            src={`http://localhost:8000/storage/images/${contact?.image}`}
+            src={`http://localhost:8000/storage/${contact?.image}`}
             alt={contact?.name}
           />
         </div>

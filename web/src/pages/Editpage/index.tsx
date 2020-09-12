@@ -21,7 +21,7 @@ import { Link, useHistory, useParams } from 'react-router-dom';
 
 const Editpage: React.FC = () => {
   const history = useHistory();
-  const { id } = useParams();
+  const { id } = useParams<any>();
   const [image, setImage] = useState();
 
   const { register, handleSubmit, watch, setValue } = useForm<Contact>({});
@@ -52,7 +52,7 @@ const Editpage: React.FC = () => {
   }
 
   function setValues() {
-    api.get(`/contacts/${id}`).then((response) => {
+    api.get(`/api/contacts/${id}`).then((response) => {
       const phoneFormated = response?.data?.findContact.phone
         .replace(/([()-])/g, '')
         .replace(/^\s*/, '')
@@ -92,7 +92,7 @@ const Editpage: React.FC = () => {
       <h1>Editar Contato</h1>
       <Content>
         <ImgContainer>
-          <img src={`http://localhost:3050/uploads/${image}`} alt="" />
+          <img src={`http://localhost:8000/storage/${image}`} alt="" />
         </ImgContainer>
 
         <form onSubmit={handleSubmit(onSubmit)}>

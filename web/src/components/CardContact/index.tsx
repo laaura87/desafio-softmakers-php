@@ -11,8 +11,7 @@ const CardContact: React.FC<Contact> = (props) => {
     const confirmRemove = window.confirm('Deseja apagar o contato?');
 
     if (confirmRemove) {
-      const url = `http://localhost:8000/api/${props.id}`;
-
+      const url = `http://localhost:8000/api/contacts/${props.id}`;
       api.delete(url).then((response) => console.log(response.data));
     }
   }
