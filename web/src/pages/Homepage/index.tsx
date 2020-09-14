@@ -16,8 +16,8 @@ const Homepage: React.FC = () => {
 
   useEffect(() => {
     api.get('/api/contacts').then((response) => {
-      setContacts(response.data.contacts);
-      setPages(response.data.last_page);
+      setContacts(response.data.contacts.data);
+      setPages(response.data.contacts.last_page);
     });
   }, []);
 
